@@ -1,0 +1,99 @@
+.index-page{
+    
+    overflow:hidden;
+    padding-top:10vh
+}
+.index-page .intro{
+    width:70%
+}
+.index-page .intro__project{
+    color:rgba(255,255,255,.3)
+}
+.index-page .intro__buttons-panel{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    margin-bottom:90px
+}
+.index-page .intro__button{
+    -webkit-box-flex:0;
+    -ms-flex:0 0 auto;
+    flex:0 0 auto;
+    margin-right:20px
+}
+.index-page .intro__win-label{
+    -webkit-box-flex:0;
+    -ms-flex:0 0 auto;
+    flex:0 0 auto;
+    margin-left:10px
+}
+.index-page .intro__monitoring{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    margin-right:-30px
+}
+.index-page .intro__monitoring-item{
+    width:280px;
+    margin-right:20px;
+    margin-top:20px
+}
+.index-page .intro__girl{
+    position:absolute;
+    top:80px;
+    right:-800px;
+    width:800px;
+    height:1300px;
+    background:url(../assets/images/rapaz1.png) no-repeat;
+    background-size:50%
+}
+@media screen and (max-width:1550px){
+    .index-page .intro__win-label{
+        margin-top:20px
+    }
+}
+@media screen and (max-width:990px){
+    .index-page{
+        height:auto;
+        overflow-y:auto
+    }
+    .index-page .intro{
+        width:100%
+    }
+    .index-page .intro__girl{
+        display:none
+    }
+    .index-page .intro__win-label{
+        margin-top:0
+    }
+}
+@media screen and (max-width:840px){
+    .index-page .intro__win-label{
+        margin-top:30px
+    }
+    .index-page .intro__monitoring-item{
+        width:100%;
+        margin-right:0;
+        margin-bottom:50px
+    }
+}
+@media screen and (max-width:690px){
+    .index-page{
+        padding:30px 0
+    }
+    .index-page .intro__description{
+        font-size:16px;
+        line-height:27px
+    }
+    .index-page .intro__button{
+        width:100%;
+        margin-bottom:10px
+    }
+}
