@@ -1,0 +1,115 @@
+(() => {
+    "use strict";
+    (() => {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var s = t[n];
+                s.enumerable = s.enumerable || !1, s.configurable = !0, "value" in s && (s.writable = !0), Object.defineProperty(e, s.key, s)
+            }
+        }
+        var t = new(function() {
+                function t(e) {
+                    ! function(e, t) {
+                        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
+                    }(this, t), this.select = e, this.value = this.select.querySelector(".select__value"), this.menu = this.select.querySelector(".select__menu"), this.options = this.select.querySelectorAll(".select__menu .select__item"), this.input = this.select.querySelector(".select__input"), this.selectActiveClass = "select--isActive", this.menuActiveClass = "select__menu--isActive", this.cb = null, this.init()
+                }
+                var n, s;
+                return n = t, (s = [{
+                    key: "init",
+                    value: function() {
+                        var e = this;
+                        this.select.addEventListener("click", (function() {
+                            return e.toggleMenu()
+                        })), this.options.forEach((function(t) {
+                            t.addEventListener("click", (function() {
+                                return e.setValue(t)
+                            }))
+                        }));
+                        var t = this.getValue();
+                        if (t) {
+                            var n = this.select.querySelector('[data-value="'.concat(t, '"]'));
+                            this.setValue(n)
+                        }
+                    }
+                }, {
+                    key: "toggleMenu",
+                    value: function() {
+                        this.select.classList.toggle(this.selectActiveClass), this.menu.classList.toggle(this.menuActiveClass)
+                    }
+                }, {
+                    key: "setValue",
+                    value: function(e) {
+                        var t = e.getAttribute("data-value"),
+                            n = e.cloneNode(!0);
+                        this.input && (this.input.value = t), this.select.setAttribute("data-value", t), this.value.innerHTML = "", this.value.appendChild(n), this.cb && this.cb(t)
+                    }
+                }, {
+                    key: "getValue",
+                    value: function() {
+                        return this.input ? this.input.value : this.select.getAttribute("data-value")
+                    }
+                }, {
+                    key: "onChange",
+                    value: function(e) {
+                        this.cb = e
+                    }
+                }]) && e(n.prototype, s), t
+            }())(document.querySelector("#selectServer")),
+            n = document.querySelector("#selectServerForm"),
+            s = document.querySelector("#map-wrap"),
+            l = document.querySelector("#map-container");
+
+        document.querySelectorAll(".server-map-2").forEach((function(e) {
+            e.style.display = "none"
+        })), document.querySelectorAll(".server-map-3").forEach((function(e) {
+            e.style.display = "none"
+        })), n.addEventListener("submit", (function(e) {
+            e.preventDefault();
+            var n = t.getValue();
+
+            // Identificar todos os servidores
+            var svs = document.getElementById("svnames");
+            const myArray = svs.textContent.split(",");
+            let length = myArray.length;
+
+            // Identificar apenas os servidores playvicio
+            var svPlayVicio = [];
+            for (let i = 0; i < length; i++) {
+                if(myArray[i].includes("PlayVicio")) {
+                    svPlayVicio.push(myArray[i]);
+                }
+            } 
+
+            // Otimizacao
+            for (let i = 0; i < svPlayVicio.length; i++) {
+                if(n == i) {
+                    for(let x = 0; x < svPlayVicio.length; x++) {
+                        if(x == i) {
+                            document.querySelectorAll(`.server-map-${x}`).forEach((function(e) {
+                                e.style.display = ""
+                            }))
+                        }
+                        else {
+                            document.querySelectorAll(`.server-map-${x}`).forEach((function(e) {
+                                e.style.display = "none"
+                            }))
+                        }
+                    }
+                }
+            }
+            document.querySelector("#server-name").textContent = svPlayVicio[n-1];
+        }));
+
+        var r = null;
+        l.addEventListener("mousedown", (function(e) {
+            r = [e.offsetX, e.offsetY], l.classList.add("map-moving")
+        })), l.addEventListener("mousemove", (function(e) {
+            if (e.target.classList.contains("icons-container") && r) {
+                var t = [r[0] - e.offsetX, r[1] - e.offsetY];
+                s.scroll(s.scrollLeft + t[0], s.scrollTop + t[1])
+            }
+        })), document.addEventListener("mouseup", (function(e) {
+            r && (l.classList.remove("map-moving"), r = null)
+        }))
+    })()
+})();
