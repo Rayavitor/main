@@ -1,0 +1,228 @@
+.game-store-page__refill{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex
+}
+.game-store-page__form{
+    width:30%;
+    margin-right:50px;
+    -webkit-box-flex:0;
+    -ms-flex:0 0 auto;
+    flex:0 0 auto
+}
+.game-store-page__buy-list-content .bubble-label{
+    margin-bottom:15px
+}
+.game-store-page__buy-list-content .bubble-label:not(:last-child){
+    margin-right:10px
+}
+.game-store-page__separator{
+    margin:30px 0
+}
+.game-store-page__product-list{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex
+}
+.game-store-page__product-list:before,.game-store-page__product-list:after{
+    position:absolute;
+    content:"";
+    width:1200px;
+    height:800px;
+    background-image:url(../assets/images/particles.01f166387eac8585b62f10e80125af00.png);
+    z-index:-1
+}
+.game-store-page__product-list:before{
+    left:-550px;
+    -webkit-transform:rotate(-180deg);
+    -ms-transform:rotate(-180deg);
+    transform:rotate(-180deg)
+}
+.game-store-page__product-list:after{
+    right:-550px;
+    -webkit-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg)
+}
+.game-store-page__product-list .product:not(:last-child){
+    margin-right:20px
+}
+.game-store-page .product{
+    width:100%;
+    padding:40px;
+    background-color:#161a35;
+    border-radius:3px;
+    overflow:hidden;
+    border:1px solid transparent;
+    -webkit-transition:.5s all;
+    -o-transition:.5s all;
+    transition:.5s all
+}
+.game-store-page .product:hover{
+    -webkit-transform:translateY(-10px);
+    -ms-transform:translateY(-10px);
+    transform:translateY(-10px);
+    border-color:var(--main-accent-color)
+}
+.game-store-page .product__top{
+    z-index:1;
+    text-align:center;
+    margin-bottom:20px
+}
+.game-store-page .product__body,.game-store-page .product__bottom{
+    z-index:1
+}
+.game-store-page .product__price{
+    z-index:1;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center
+}
+.game-store-page .product__old-price{
+    text-decoration:line-through;
+    color:rgba(255,255,255,.3)
+}
+.game-store-page .product__old-price .text{
+    font-size:20px;
+    font-family:var(--font-bold);
+    color:rgba(255,255,255,.3)
+}
+.game-store-page .product__old-price .icon{
+    font-size:12px
+}
+.game-store-page .product__current-price .text{
+    color:var(--main-accent-color);
+    text-shadow:0 0 40px var(--main-accent-color);
+    font-family:var(--font-bold);
+    font-size:35px
+}
+.game-store-page .product__current-price .icon{
+    bottom:-5px;
+    color:var(--main-accent-color);
+    text-shadow:0 0 10px var(--main-accent-color)
+}
+.game-store-page .product .product-item{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    padding:15px 20px;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    background:rgba(255,255,255,.03);
+    -webkit-backdrop-filter:blur(5px);
+    backdrop-filter:blur(5px);
+    border-radius:3px
+}
+.game-store-page .product .product-item .icon{
+    font-size:13px;
+    margin-right:20px;
+    color:rgba(255,255,255,.3)
+}
+.game-store-page .product .product-item .icon-plus{
+    -webkit-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    transform:rotate(45deg);
+    font-size:16px
+}
+.game-store-page .product .product-item:not(:last-child){
+    margin-bottom:5px
+}
+.game-store-page .product .product-item.included .icon{
+    color:var(--main-accent-color);
+    text-shadow:0 0 10px var(--main-accent-color)
+}
+.game-store-page .product.best{
+    border:1px solid #ffbc10
+}
+.game-store-page .product.best:before{
+    position:absolute;
+    top:20px;
+    right:-40px;
+    content:"Ð›Ð£Ð§Ð¨Ð•Ð•";
+    width:160px;
+    height:30px;
+    background:#ffbc10;
+    text-align:center;
+    line-height:30px;
+    font-family:var(--font-medium);
+    -webkit-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    transform:rotate(45deg)
+}
+.game-store-page .product.best .product__current-price .text{
+    color:#ffbc10;
+    text-shadow:0 0 40px #ffbc10;
+    font-family:var(--font-bold);
+    font-size:35px
+}
+.game-store-page .product.best .product__current-price .icon{
+    bottom:-5px;
+    color:#ffbc10;
+    text-shadow:0 0 10px #ffbc10
+}
+.game-store-page .product.best .button{
+    background:#ffbc10
+}
+.game-store-page .product__bg{
+    position:absolute;
+    opacity:.03;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+    z-index:0
+}
+#donateModalServer,#donateModalNickname,#donateModalSum,#donateModalNSum, #donateModalQRCode {
+    color:var(--main-accent-color)
+}
+
+#donateModalQRCode, #donateModalCC {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+#donateModalCC {
+    display:block;
+    width:100%;
+    border-radius:3px;
+    border:1px solid transparent;
+    background:rgba(255,255,255,var(--main-ui-opacity));
+    padding:20px;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    color:var(--main-light-color);
+    font-size:var(--base-font-size);
+    font-family:var(--font-medium)
+}
+
+@media screen and (max-width:1000px){
+    .game-store-page__refill,.game-store-page__product-list{
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+        -ms-flex-direction:column;
+        flex-direction:column
+    }
+    .game-store-page__product-list:before,.game-store-page__product-list:after{
+        display:none
+    }
+    .game-store-page__form{
+        width:100%;
+        margin-right:0;
+        margin-bottom:20px
+    }
+}
+@media screen and (max-width:700px){
+    .game-store-page .product{
+        padding:20px
+    }
+}

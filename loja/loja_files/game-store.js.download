@@ -1,0 +1,229 @@
+(() => {
+    "use strict";
+    (() => {
+
+        var gCurItemPrice = 1.0;
+        var gUsdCurr = 1;
+
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var o = t[n];
+                o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, o.key, o)
+            }
+        }
+        const t = function() {
+            function t(e) {
+                ! function(e, t) {
+                    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
+                }(this, t), this.select = e, this.value = this.select.querySelector(".select__value"), this.menu = this.select.querySelector(".select__menu"), this.options = this.select.querySelectorAll(".select__menu .select__item"), this.input = this.select.querySelector(".select__input"), this.selectActiveClass = "select--isActive", this.menuActiveClass = "select__menu--isActive", this.cb = null, this.init()
+            }
+            var n, o;
+            return n = t, (o = [{
+                key: "init",
+                value: function() {
+                    var e = this;
+                    this.select.addEventListener("click", (function() {
+                        return e.toggleMenu()
+                    })), this.options.forEach((function(t) {
+                        t.addEventListener("click", (function() {
+                            return e.setValue(t)
+                        }))
+                    }));
+                    var t = this.getValue();
+                    if (t) {
+                        var n = this.select.querySelector('[data-value="'.concat(t, '"]'));
+                        this.setValue(n)
+                    }
+                }
+            }, {
+                key: "toggleMenu",
+                value: function() {
+                    this.select.classList.toggle(this.selectActiveClass), this.menu.classList.toggle(this.menuActiveClass)
+                }
+            }, {
+                key: "setValue",
+                value: function(e) {
+                    var t = e.getAttribute("data-value"),
+                        n = e.cloneNode(!0);
+                    this.input && (this.input.value = t), this.select.setAttribute("data-value", t), this.value.innerHTML = "", this.value.appendChild(n), this.cb && this.cb(t)
+                }
+            }, {
+                key: "getValue",
+                value: function() {
+                    return this.input ? this.input.value : this.select.getAttribute("data-value")
+                }
+            }, {
+                key: "onChange",
+                value: function(e) {
+                    this.cb = e
+                }
+            }]) && e(n.prototype, o), t
+        }();
+
+        function n(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var o = t[n];
+                o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, o.key, o)
+            }
+        }
+        const o = function() {
+            function e(t) {
+                ! function(e, t) {
+                    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
+                }(this, e), this.modal = t, this.body = document.body, this.closeButton = this.modal.querySelector(".modal__close"), this.modalActiveClass = "modal--isActive", this.noScrollClass = "no-scroll", this.init()
+            }
+            var t, o;
+            return t = e, (o = [{
+                key: "init",
+                value: function() {
+                    var e = this;
+                    this.closeButton.addEventListener("click", (function() {
+                        return e.close()
+                    }))
+                }
+            }, {
+                key: "open",
+                value: function() {
+                    this.modal.classList.add(this.modalActiveClass), this.body.classList.add(this.noScrollClass)
+                }
+            }, {
+                key: "close",
+                value: function() {
+                    this.modal.classList.remove(this.modalActiveClass), this.body.classList.remove(this.noScrollClass)
+                }
+            }]) && n(t.prototype, o), e
+        }();
+        
+        var i = new t(document.querySelector("#selectServer")),
+            c = new t(document.querySelector("#paymentMethod")),
+            r = document.querySelector("#paymentForm"),
+            a = document.querySelector("#errorGroup"),
+            s = document.querySelector("#errorText"),
+            u = document.querySelector("#donateModal"),
+            l = document.querySelector("#donateModalServer"),
+            d = document.querySelector("#donateModalNickname"),
+            h = document.querySelector("#donateModalSum"),
+            v = document.querySelector("#donateModalNSum"),
+            m = document.querySelector("#donateModalCancel"),
+            f = document.querySelector("#donateModalOk"),
+            x = 0,
+            y = new o(u)
+        
+        function p(e) {
+            if (!e) return a.style.display = "none", void(s.innerHTML = "");
+            a.style.display = "", s.innerHTML = e
+        }
+        var g = !1,
+            S = document.querySelector("#submitButton .button__text");
+
+        function _(e) {
+            g = e, e ? (S.innerHTML = "Espere, por favor", p("")) : S.innerHTML = "Completar"
+        }
+        r.addEventListener("submit", (function(e) {
+            e.preventDefault();
+
+            var t = new FormData(r),
+                n = i.getValue(),
+                o = t.get("account"),
+                s = c.getValue()
+                x = t.get("sum");
+
+            if (0 == n) return p("Escolha um Servidor!"), !1;
+
+            if(x == 0)
+                return p("Valor mínimo de pagamento e R$1!");
+            
+            fetch("/engine/user/getuser.php", {
+                method: "POST",
+                body: t
+            }).then((function(e) {
+                return e.json()
+            })).then((function(e) {
+                if (!e || !e.answer) return p("Problema de conexão com o servidor. Tente depois.");
+                
+                switch (e.answer) {
+                    case "not_account":
+                        return p("Apelido inexistente no servidor escolhido.");
+                    default:
+                        var svs = document.getElementById("svnames");
+                        const myArray = svs.textContent.split(",");
+
+                        const div = document.querySelector('#modal_pix');
+                        div.style.display = 'block';
+
+                        if(s == 3) { // Pagemento via pix
+                            // Gerar o Pix
+                            $.post("criar_pix.php", {name: o, quantidade: x, sv: n}, function(Information) {
+                                
+                                var code = Information;
+                            
+                                const infoArray = code.split(",");
+
+                                document.getElementById("donateModalQRCode").src = `${infoArray[0]}`;
+                                document.getElementById("donateModalCC").value = infoArray[1];
+                            });
+                        }
+                        else {
+                            div.style.display = 'none';
+                        }
+
+                        l.innerText = [myArray[n-1]], d.innerText = o, h.innerText = (x / gUsdCurr).toFixed(2), y.open()
+                        break;
+                }
+            })).catch((function(e) {
+                return p("Problema de conexão com o servidor. Tente depois.")
+            }))
+        })), m.addEventListener("click", (function(e) {
+            y.close()
+        })), f.addEventListener("click", (function(e) {
+            y.close();
+            var t = new FormData(r),
+                n = t.get("account"),
+                o = t.get("sum"),
+                a = i.getValue(),
+                l = document.querySelector("#donateModalServer"),
+                s = c.getValue();
+
+            if (!g) {
+                
+                if(o == 0)
+                    return p("Valor mínimo de pagamento e R$1!");
+                
+                if(s == 1) {
+                    //Insira o código de checkout gerado no Passo 1
+                    $.post("processar_compra.php", {name: n, quantidade: o, server: l.innerText}, function(Information) {
+                        
+                        var code = Information;
+                        location.href="https://pagseguro.uol.com.br/v2/checkout/payment.html?code=" + code;
+                        console.log("Redirecionamento");
+
+                    });
+                }
+                else if(s == 3) {
+                    let textoCopiado = document.getElementById("donateModalCC");
+                    textoCopiado.select();
+                    textoCopiado.setSelectionRange(0, 99999);
+                    document.execCommand("copy");
+                    return alert("O codigo do Pix foi copiado, para pagar basta colar em seu aplicativo do banco!");
+                }
+            }
+        }));
+        var b = document.querySelector("#sumAmount"),
+            q = document.querySelector("#amountGroup"),
+            k = document.querySelector("#amountText span"),
+            C = document.querySelector("#amountUsdText span"),
+            w = function() {
+                if (b.value.length) {
+                    var e = b.value.replace(/\D/g, "");
+                    if (e !== b.value && (b.value = e), !(e <= 0)) {
+                        i.getValue();
+                        var t = gCurItemPrice,
+                            n = parseInt(e),
+                            o = Math.floor(n / t);
+                        q.style.display = "", k.innerText = o, v.innerText = o, C.innerText = (n / gUsdCurr).toFixed(2)
+                    }
+                }
+            };
+        
+    })()
+})();
