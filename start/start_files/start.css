@@ -1,0 +1,112 @@
+.start-page .launcher{
+    padding-top:50px;
+    margin-bottom:40px
+}
+.start-page .launcher__preview{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-pack:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    overflow:hidden;
+    height:230px
+}
+.start-page .launcher__image{
+    width:590px;
+    height:360px;
+    background:url(../assets/images/launcer_pv.png) no-repeat;
+    background-size:100%;
+    -webkit-box-shadow:0 30px 60px rgba(0,0,0,.3);
+    box-shadow:0 30px 60px rgba(0,0,0,.3)
+}
+.start-page .launcher__image:before,.start-page .launcher__image:after{
+    position:absolute;
+    content:"";
+    top:40px;
+    width:475px;
+    height:290px;
+    background:url(../assets/images/launcer_pv.png);
+    background-size:100%;
+    z-index:-1
+}
+.start-page .launcher__image:before{
+    left:-100px
+}
+.start-page .launcher__image:after{
+    right:-100px
+}
+.start-page .launcher__download{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-pack:justify;
+    -ms-flex-pack:justify;
+    justify-content:space-between;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    padding:65px 60px;
+    overflow:hidden;
+    background-color:#161a35;
+    background-image:url(../assets/images/person.1680a5f02ccb0e43583d671ba00e18f6.webp);
+    background-repeat:no-repeat;
+    background-position:-100px -300px
+}
+.start-page .launcher__left-col{
+    width:65%;
+    margin-right:30px
+}
+.start-page .launcher__right-col{
+    -webkit-box-flex:0;
+    -ms-flex:0 0 auto;
+    flex:0 0 auto
+}
+.start-page .launcher__button .button__icon{
+    font-size:20px
+}
+.start-page .system__info{
+    padding:30px 40px
+}
+.start-page .system__info:not(:last-child){
+    margin-bottom:20px
+}
+@media screen and (max-width:950px){
+    .start-page .launcher{
+        padding-top:0
+    }
+    .start-page .launcher__preview{
+        height:180px
+    }
+    .start-page .launcher__image{
+        width:500px
+    }
+    .start-page .launcher__image:before,.start-page .launcher__image:after{
+        display:none
+    }
+    .start-page .launcher__download{
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+        -ms-flex-direction:column;
+        flex-direction:column;
+        -webkit-box-align:start;
+        -ms-flex-align:start;
+        align-items:flex-start;
+        padding:30px
+    }
+    .start-page .launcher__left-col{
+        width:100%;
+        margin-right:0;
+        margin-bottom:30px
+    }
+}
+@media screen and (max-width:750px){
+    .start-page .system__info{
+        padding:20px
+    }
+}
+@media screen and (max-width:500px){
+    .start-page .launcher__download{
+        padding:30px 0
+    }
+}
