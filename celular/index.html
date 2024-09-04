@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout do Celular</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .phone {
+            width: 247px;
+            height: 415px;
+            position: relative;
+        }
+
+        .phone img {
+            width: 100%;
+            height: auto;
+        }
+
+        .background {
+            position: absolute;
+            width: 190px;
+            height: 397px;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+        }
+
+        .web-view {
+            position: absolute;
+            width: 190px;
+            height: 397px;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+        }
+
+        .button {
+            position: absolute;
+            width: 52px;
+            height: 48px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 12px;
+            right: 10px;
+            visibility: hidden;
+        }
+
+        .button.telegram {
+            background-image: url('telegram.png'); /* Substitua pelo caminho da imagem do Telegram */
+        }
+
+        .button.digital {
+            background-image: url('digital.png'); /* Substitua pelo caminho da imagem Digital */
+        }
+
+        .overlay {
+            position: absolute;
+            width: 190px;
+            height: 397px;
+            top: 0;
+            left: 0;
+            background-image: url('bloqueio.png'); /* Substitua pelo caminho da imagem de bloqueio */
+            background-size: cover;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="phone">
+            <img src="celular.png" alt="Celular"> <!-- Substitua pelo caminho da imagem do celular -->
+            <div class="background" id="background"></div>
+            <div class="web-view" id="web-view"></div>
+            <div class="button telegram" id="telegram-button"></div>
+            <div class="overlay" id="overlay"></div>
+            <div class="button digital" id="digital-button"></div>
+        </div>
+    </div>
+</body>
+</html>
