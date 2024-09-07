@@ -1,0 +1,38 @@
+<head>
+    <title>Painel de Login MTA:SA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/alert.css">
+    <script>
+        function closeAlert() {
+            document.getElementById("alert").innerHTML = "";
+        }
+
+        function login() {
+            var username = document.getElementById("loginUser").value;
+            var password = document.getElementById("loginPass").value;
+            var checksave = document.getElementById("loginSave").checked;
+            mta.triggerEvent("submitLogin", username, password, checksave);
+        }
+
+        function register() {
+            var username = document.getElementById("registerUser").value;
+            var password = document.getElementById("registerPass").value;
+            var repassword = document.getElementById("registerRepeatPass").value;
+            mta.triggerEvent("submitRegister", username, password, repassword);
+        }
+
+        function showPass() {
+            var inputpass = document.getElementById("loginPass");
+            var eyeimg = document.getElementsByClassName("show-password")[0];
+            if (inputpass.type === "password") {
+                inputpass.type = "text";
+                eyeimg.src = "images/fa-eye-slash.png";
+            } else {
+                inputpass.type = "password";
+                eyeimg.src = "images/fa-eye.png";
+            }
+        }
+    </script>
+</head>
