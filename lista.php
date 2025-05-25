@@ -67,7 +67,7 @@ header("Content-Disposition: attachment; filename=\"lista.m3u\"");
 echo "#EXTM3U\n";
 
 foreach ($canais as $slug => $info) {
-    $url = "http://{$_SERVER['HTTP_HOST']}/meuprojeto/iptv/canal.php?canal={$slug}&user=" . urlencode($user) . "&pass=" . urlencode($pass);
+    $url = "canal.php?canal={$slug}&user=" . urlencode($user) . "&pass=" . urlencode($pass);
 
     $tvg_id = $info['tvg-id'] ?? '';
     $tvg_name = $info['tvg-name'] ?? $info['name'];
