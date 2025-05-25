@@ -71,7 +71,7 @@ if ($token !== $expected) {
 }
 
 if (time() > $exp) {
-    $urlNova = "http://{$_SERVER['HTTP_HOST']}/meuprojeto/iptv/canal.php?canal=" . urlencode($canal) . "&user=" . urlencode($user) . "&pass=" . urlencode($pass);
+    $urlNova = "canal.php?canal=" . urlencode($canal) . "&user=" . urlencode($user) . "&pass=" . urlencode($pass);
     header("Location: $urlNova");
     exit;
 }
