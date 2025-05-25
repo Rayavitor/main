@@ -71,7 +71,7 @@ if ($token !== $expected) {
 }
 
 if (time() > $exp) {
-    $urlNova = "canal.php?canal=" . urlencode($canal) . "&user=" . urlencode($user) . "&pass=" . urlencode($pass);
+    $urlNova = "https://hipe-player.onrender.com/canal.php?canal=" . urlencode($canal) . "&user=" . urlencode($user) . "&pass=" . urlencode($pass);
     header("Location: $urlNova");
     exit;
 }
