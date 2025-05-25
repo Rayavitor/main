@@ -71,7 +71,7 @@ $exp = time() + 5 * 60;
 $token = hash_hmac('sha256', $canal . $user . $exp, SECRET_KEY);
 
 // Redireciona para o stream incluindo user e pass
-$redirectUrl = "http://{$_SERVER['HTTP_HOST']}/meuprojeto/iptv/stream.php?canal={$canal}&user=" . urlencode($user) . "&pass=" . urlencode($pass) . "&exp={$exp}&token={$token}";
+$redirectUrl = "https://hipe-player.onrender.com/stream.php?canal={$canal}&user=" . urlencode($user) . "&pass=" . urlencode($pass) . "&exp={$exp}&token={$token}";
 
 header("Location: $redirectUrl");
 exit;
