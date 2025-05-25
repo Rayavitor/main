@@ -67,7 +67,7 @@ header("Content-Disposition: attachment; filename=\"lista.m3u\"");
 echo "#EXTM3U\n";
 
 foreach ($canais as $slug => $info) {
-    $url = "canal.php?canal={$slug}&user=" . urlencode($user) . "&pass=" . urlencode($pass);
+    $url = "https://hipe-player.onrender.com/canal.php?canal={$slug}&user=" . urlencode($user) . "&pass=" . urlencode($pass);
 
     $tvg_id = $info['tvg-id'] ?? '';
     $tvg_name = $info['tvg-name'] ?? $info['name'];
