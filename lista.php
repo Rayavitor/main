@@ -9,7 +9,7 @@ header("Content-Disposition: attachment; filename=\"lista.m3u\"");
 echo "#EXTM3U\n";
 
 foreach ($canais as $slug => $info) {
-    $url = "https://hipe-player.onrender.com/stream.php?canal={$slug}";
+    $url = "stream.php?canal={$slug}";
 
     $tvg_id = $info['tvg-id'] ?? '';
     $tvg_name = $info['tvg-name'] ?? $info['name'];
