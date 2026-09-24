@@ -1,0 +1,508 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #08090d;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+/* Fundo */
+
+.background {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(100, 60, 255, 0.12),
+            transparent 45%
+        );
+}
+
+.orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.35;
+
+    animation: float 8s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 350px;
+    height: 350px;
+
+    background: #6c3cff;
+
+    top: -120px;
+    left: -100px;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+
+    background: #00aaff;
+
+    right: -100px;
+    bottom: -100px;
+
+    animation-delay: -4s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -30px);
+    }
+}
+
+/* Container */
+
+.container {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+/* Card */
+
+.login-card {
+    width: 100%;
+    max-width: 410px;
+
+    padding: 42px;
+
+    border-radius: 22px;
+
+    background: rgba(17, 18, 25, 0.78);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55);
+
+    animation: cardAppear 0.7s ease;
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Logo */
+
+.logo {
+    text-align: center;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.logo span {
+    color: #7c5cff;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: #858895;
+
+    font-size: 14px;
+
+    margin-bottom: 32px;
+}
+
+/* Inputs */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    color: #b5b7c2;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 52px;
+
+    padding: 0 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: white;
+
+    font-size: 14px;
+
+    transition: 0.25s;
+}
+
+.input-group input::placeholder {
+    color: #666975;
+}
+
+.input-group input:focus {
+    border-color: #7c5cff;
+
+    background: rgba(124, 92, 255, 0.07);
+
+    box-shadow:
+        0 0 0 3px rgba(124, 92, 255, 0.12);
+}
+
+/* Button */
+
+button {
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #7c5cff,
+        #5d38e8
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+    box-shadow:
+        0 8px 25px rgba(124, 92, 255, 0.25);
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(124, 92, 255, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Mensagem */
+
+#message {
+    min-height: 20px;
+
+    text-align: center;
+
+    margin-top: 16px;
+
+    font-size: 13px;
+}
+
+.success {
+    color: #5cff9d;
+}
+
+.error {
+    color: #ff6878;
+}
+
+/* Footer */
+
+.footer {
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-size: 11px;
+
+    color: #555762;
+}
+
+/* Celular */
+
+@media (max-width: 480px) {
+
+    .login-card {
+        padding: 30px 24px;
+
+        border-radius: 18px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+}
+/* ==============================
+   DIALOG DE MANUTENÇÃO
+   ============================== */
+
+.dialog-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.3s ease;
+}
+
+.dialog-overlay.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* Caixa */
+
+.dialog {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 400px;
+
+    padding: 38px 30px 30px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background: #111219;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.65);
+
+    transform: translateY(25px) scale(0.95);
+
+    transition: 0.3s ease;
+}
+
+.dialog-overlay.active .dialog {
+    transform: translateY(0) scale(1);
+}
+
+
+/* Botão fechar */
+
+.close-button {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    width: 34px;
+    height: 34px;
+
+    margin: 0;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #999;
+
+    font-size: 23px;
+
+    line-height: 34px;
+
+    box-shadow: none;
+
+    transition: 0.2s;
+}
+
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* Ícone */
+
+.dialog-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(124, 92, 255, 0.12);
+
+    border: 1px solid rgba(124, 92, 255, 0.2);
+
+    font-size: 30px;
+
+    animation: toolFloat 2s ease-in-out infinite;
+}
+
+@keyframes toolFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* Título */
+
+.dialog h2 {
+    margin-bottom: 12px;
+
+    font-size: 21px;
+
+    color: white;
+}
+
+
+/* Texto */
+
+.dialog p {
+    margin: 0 auto;
+
+    max-width: 310px;
+
+    color: #999ba8;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.dialog-small {
+    margin-top: 5px !important;
+
+    color: #6f717d !important;
+
+    font-size: 13px !important;
+}
+
+
+/* Botão */
+
+.dialog-button {
+    margin-top: 24px;
+
+    height: 48px;
+
+    font-size: 14px;
+}
+
+
+/* Celular */
+
+@media (max-width: 480px) {
+
+    .dialog {
+        padding: 35px 22px 24px;
+    }
+
+    .dialog h2 {
+        font-size: 19px;
+    }
+}
